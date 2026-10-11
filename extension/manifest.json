@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "UE Chat Bridge",
+  "version": "1.2.1",
+  "description": "Lets an AI chat in your browser work inside your Unreal Engine editor, through the UE Chat Bridge running on your PC.",
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": { "default_popup": "popup.html", "default_title": "UE Chat Bridge" },
+  "permissions": ["storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://chat.deepseek.com/*",
+        "https://deepseek.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://chat.qwen.ai/*",
+        "https://kimi.ai/*",
+        "https://www.kimi.com/*",
+        "https://chat.z.ai/*",
+        "https://www.meta.ai/*",
+        "https://copilot.microsoft.com/*",
+        "https://grok.com/*",
+        "https://chat.mistral.ai/*",
+        "https://lmarena.ai/*",
+        "https://arena.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://poe.com/*",
+        "https://huggingface.co/chat/*"
+      ],
+      "js": ["parse.js", "sites.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

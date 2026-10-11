@@ -1,0 +1,7 @@
+# Throwaway runtime files: logs, bytecode, and the local bridge config
+# (port + paired extension id). Defaults are used when config.json is absent.
+logs/
+dist/
+__pycache__/
+*.pyc
+bridge/config.json

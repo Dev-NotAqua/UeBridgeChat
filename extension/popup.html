@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 300px; margin: 0; padding: 12px 14px 14px; font: 12.5px/1.45 "Segoe UI", system-ui, sans-serif; color: #e8e6e1; background: #16181d; }
+  h3 { margin: 0 0 8px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #6b7280; flex: none; }
+  .dot.ready { background: #3ecf8e; box-shadow: 0 0 0 3px rgba(62,207,142,.18); }
+  .dot.warn { background: #f5b83d; }
+  .line { color: #b9bec8; margin-bottom: 10px; }
+  label { display: grid; gap: 3px; margin: 8px 0; color: #b9bec8; }
+  input, select { font: inherit; color: inherit; background: #262a33; border: 1px solid #353a45; border-radius: 7px; padding: 5px 8px; width: 100%; box-sizing: border-box; }
+  .row { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+  button { font: inherit; color: #1a1300; background: #f5b83d; border: 1px solid #f5b83d; border-radius: 7px; padding: 5px 12px; cursor: pointer; font-weight: 650; }
+  button:hover { background: #ffc857; }
+  .muted { color: #7d8490; font-size: 11.5px; margin-top: 10px; }
+  .check { display: flex; gap: 7px; align-items: center; color: #b9bec8; margin: 8px 0; }
+  .check input { width: auto; }
+</style>
+</head>
+<body>
+  <h3><span class="dot" id="dot"></span><span id="title">UE Chat Bridge</span><span class="muted" id="ver"></span></h3>
+  <div class="line" id="status">Checking bridge…</div>
+  <label>Bridge port
+    <input id="port" type="number" min="1" max="65535">
+  </label>
+  <label>When to ask before running a command
+    <select id="mode">
+      <option value="ask-python">Ask before Python</option>
+      <option value="ask-all">Ask before every command</option>
+      <option value="auto">Auto: never ask</option>
+    </select>
+  </label>
+  <label>Max command blocks per AI message
+    <input id="maxBlocks" type="number" min="1" max="10">
+  </label>
+  <label class="check"><input id="attachImages" type="checkbox"> Attach viewport screenshots</label>
+  <div class="row"><button id="save">Save</button><button id="test" type="button" style="background:#262a33;border-color:#353a45;color:inherit;font-weight:400;">Test</button><span class="muted" id="saved"></span></div>
+  <div class="muted">Green = bridge + Unreal editor ready. Yellow = bridge OK but the editor is not reachable — open your project (UE 5.8+) with the MCP server on. Grey = bridge offline — run start.bat and keep its window open.</div>
+  <script src="popup.js"></script>
+</body>
+</html>
